@@ -6,7 +6,10 @@ import { Todo } from '../../shared/interfaces/todo';
   standalone: true,
   selector: 'app-todo-form',
   template: `
-    <form [formGroup]="todoForm">
+    <form
+      [formGroup]="todoForm"
+      (ngSubmit)="todoSubmitted.emit(todoForm.getRawValue())"
+    >
       <input type="text" formControlName="title" placeholder="title..." />
       <input
         type="text"
