@@ -1,5 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, output } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Todo } from '../../shared/interfaces/todo';
 
 @Component({
   standalone: true,
@@ -18,6 +19,7 @@ import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
   imports: [ReactiveFormsModule],
 })
 export class TodoFormComponent {
+  todoSubmitted = output<Todo>();
   private fb = inject(FormBuilder);
 
   todoForm = this.fb.nonNullable.group({
