@@ -7,7 +7,7 @@ import { TodoService } from '../shared/data-access/todo.service';
   selector: 'app-home',
   template: `
     <h2>Todo</h2>
-    <app-todo-form (todoSubmitted)="createTodo($event)" />
+    <app-todo-form (todoSubmitted)="todoService.addTodo($event)" />
   `,
   imports: [TodoFormComponent],
 })
