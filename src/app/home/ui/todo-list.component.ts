@@ -2,6 +2,7 @@ import { Component, input } from '@angular/core';
 import { Todo } from '../../shared/interfaces/todo';
 
 @Component({
+  standalone: true,
   selector: 'app-todo-list',
   template: `
     <ul>
