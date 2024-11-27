@@ -1,6 +1,6 @@
 import { Component, inject, output } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
-import { CreateTodo, Todo } from '../../shared/interfaces/todo';
+import { CreateTodo } from '../../shared/interfaces/todo';
 
 @Component({
   standalone: true,
