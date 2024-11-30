@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { TodoService } from '../shared/data-access/todo.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -8,4 +9,5 @@ import { TodoService } from '../shared/data-access/todo.service';
 })
 export default class DetailComponent {
   private todoService = inject(TodoService);
+  private route = inject(ActivatedRoute);
 }
