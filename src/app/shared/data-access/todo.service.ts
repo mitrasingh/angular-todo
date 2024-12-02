@@ -17,4 +17,8 @@ export class TodoService {
       { ...todo, id: Date.now().toString() },
     ]);
   }
+
+  completeTodo(id: string) {
+    this.#todos.update((todos) => todos.filter((todo) => todo.id !== id));
+  }
 }
