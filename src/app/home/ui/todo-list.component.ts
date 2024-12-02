@@ -11,6 +11,7 @@ import { RouterLink } from '@angular/router';
       <li>
         <a routerLink="/detail/{{ todo.id }}">{{ todo.title }}</a>
       </li>
+      <button>Completed</button>
       } @empty {
       <li>Nothing to do!</li>
       }
