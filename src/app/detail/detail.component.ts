@@ -6,7 +6,14 @@ import { toSignal } from '@angular/core/rxjs-interop';
 @Component({
   standalone: true,
   selector: 'app-detail',
-  template: ` <h2>Detail</h2> `,
+  template: `
+    @if (todo(); as todo) {
+    <h2>{{ todo.title }}</h2>
+    <p>{{ todo.description }}</p>
+    } @else {
+    <p>Could not find todo.</p>
+    }
+  `,
 })
 export default class DetailComponent {
   private todoService = inject(TodoService);
