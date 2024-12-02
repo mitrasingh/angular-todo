@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { TodoService } from '../shared/data-access/todo.service';
 import { ActivatedRoute } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -13,4 +13,10 @@ export default class DetailComponent {
   private route = inject(ActivatedRoute);
 
   private paramMap = toSignal(this.route.paramMap);
+
+  todo = computed(() =>
+    this.todoService
+      .todos()
+      .find((todo) => todo.id === this.paramMap()?.get('id'))
+  );
 }
