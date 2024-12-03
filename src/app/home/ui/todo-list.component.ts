@@ -1,7 +1,6 @@
-import { Component, inject, input, output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Todo } from '../../shared/interfaces/todo';
 import { RouterLink } from '@angular/router';
-import { TodoService } from '../../shared/data-access/todo.service';
 
 @Component({
   standalone: true,
