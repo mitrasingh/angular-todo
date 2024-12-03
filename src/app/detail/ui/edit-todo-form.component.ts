@@ -11,8 +11,16 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
       [formGroup]="editForm"
       (ngSubmit)="todoEdited.emit(editForm.getRawValue())"
     >
-      <input />
-      <input />
+      <input
+        type="text"
+        formControlName="title"
+        placeholder="will hold current value..."
+      />
+      <input
+        type="text"
+        formControlName="description"
+        placeholder="will hold current value..."
+      />
       <button>Update Todo</button>
     </form>
   `,
