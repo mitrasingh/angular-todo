@@ -21,4 +21,12 @@ export class TodoService {
   completeTodo(id: string) {
     this.#todos.update((todos) => todos.filter((todo) => todo.id !== id));
   }
+
+  editTodo(updatedTodo: Todo) {
+    this.#todos.update((todos) =>
+      todos.map((todo) =>
+        todo.id === updatedTodo.id ? { ...todo, ...updatedTodo } : todo
+      )
+    );
+  }
 }
