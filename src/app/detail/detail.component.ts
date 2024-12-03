@@ -2,7 +2,7 @@ import { Component, computed, inject } from '@angular/core';
 import { TodoService } from '../shared/data-access/todo.service';
 import { ActivatedRoute } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
-
+import { EditTodoFormComponent } from './ui/edit-todo-form.component';
 @Component({
   standalone: true,
   selector: 'app-detail',
@@ -13,8 +13,11 @@ import { toSignal } from '@angular/core/rxjs-interop';
     <button (click)="toggleEditTodo()">Edit</button>
     } @else {
     <p>Could not find todo.</p>
+    } @if (showEditTodo) {
+    <app-edit-todo-form></app-edit-todo-form>
     }
   `,
+  imports: [EditTodoFormComponent],
 })
 export default class DetailComponent {
   private todoService = inject(TodoService);
