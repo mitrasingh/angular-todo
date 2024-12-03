@@ -9,7 +9,10 @@ import { TodoListComponent } from './ui/todo-list.component';
   template: `
     <h2>Todo</h2>
     <app-todo-form (todoSubmitted)="todoService.addTodo($event)" />
-    <app-todo-list [todos]="todoService.todos()" />
+    <app-todo-list
+      [todos]="todoService.todos()"
+      (completeTodo)="todoService.completeTodo($event)"
+    />
   `,
   imports: [TodoFormComponent, TodoListComponent],
 })
