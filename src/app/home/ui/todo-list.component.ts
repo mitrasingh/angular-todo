@@ -1,6 +1,7 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { Todo } from '../../shared/interfaces/todo';
 import { RouterLink } from '@angular/router';
+import { TodoService } from '../../shared/data-access/todo.service';
 
 @Component({
   standalone: true,
@@ -11,7 +12,7 @@ import { RouterLink } from '@angular/router';
       <li>
         <a routerLink="/detail/{{ todo.id }}">{{ todo.title }}</a>
       </li>
-      <button>Completed</button>
+      <button (click)="completeTodo.emit(todo.id)">Completed</button>
       } @empty {
       <li>Nothing to do!</li>
       }
@@ -29,4 +30,5 @@ import { RouterLink } from '@angular/router';
 })
 export class TodoListComponent {
   todos = input.required<Todo[]>();
+  completeTodo = output<string>();
 }
