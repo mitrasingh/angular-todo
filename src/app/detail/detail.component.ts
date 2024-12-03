@@ -10,6 +10,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
     @if (todo(); as todo) {
     <h2>{{ todo.title }}</h2>
     <p>{{ todo.description }}</p>
+    <button (click)="toggleEditTodo()">Edit</button>
     } @else {
     <p>Could not find todo.</p>
     }
@@ -20,6 +21,12 @@ export default class DetailComponent {
   private route = inject(ActivatedRoute);
 
   private paramMap = toSignal(this.route.paramMap);
+
+  showEditTodo: boolean = false;
+
+  toggleEditTodo(): void {
+    this.showEditTodo = !this.showEditTodo;
+  }
 
   todo = computed(() =>
     this.todoService
