@@ -1,5 +1,5 @@
-import { Component, inject, output } from '@angular/core';
-import { CreateTodo } from '../../shared/interfaces/todo';
+import { Component, inject, input, output } from '@angular/core';
+import { CreateTodo, Todo } from '../../shared/interfaces/todo';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -27,8 +27,10 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
   imports: [ReactiveFormsModule],
 })
 export class EditTodoFormComponent {
-  todoEdited = output<CreateTodo>();
   private fb = inject(FormBuilder);
+
+  todoEdited = output<CreateTodo>();
+  todos = input.required<Todo[]>();
 
   editForm = this.fb.nonNullable.group({
     title: [''],
