@@ -14,13 +14,13 @@ import { EditTodoFormComponent } from './ui/edit-todo-form.component';
     } @else {
     <p>Could not find todo.</p>
     } @if (showEditTodo) {
-    <app-edit-todo-form></app-edit-todo-form>
+    <app-edit-todo-form [todos]="todoService.todos()"></app-edit-todo-form>
     }
   `,
   imports: [EditTodoFormComponent],
 })
 export default class DetailComponent {
-  private todoService = inject(TodoService);
+  todoService = inject(TodoService);
   private route = inject(ActivatedRoute);
 
   private paramMap = toSignal(this.route.paramMap);
