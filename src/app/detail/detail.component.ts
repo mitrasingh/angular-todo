@@ -14,7 +14,7 @@ import { EditTodoFormComponent } from './ui/edit-todo-form.component';
     } @else {
     <p>Could not find todo.</p>
     } @if (showEditTodo) {
-    <app-edit-todo-form [todos]="todoService.todos()"></app-edit-todo-form>
+    <app-edit-todo-form [todoObj]="todo()"></app-edit-todo-form>
     }
   `,
   imports: [EditTodoFormComponent],
@@ -29,6 +29,7 @@ export default class DetailComponent {
 
   toggleEditTodo(): void {
     this.showEditTodo = !this.showEditTodo;
+    console.log(this.todo()?.description);
   }
 
   todo = computed(() =>
