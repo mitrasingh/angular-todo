@@ -7,6 +7,7 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
   selector: 'app-edit-todo-form',
   template: `
     <h1>edit</h1>
+    @if (todoObj(); as todo) {
     <form
       [formGroup]="editForm"
       (ngSubmit)="todoEdited.emit(editForm.getRawValue())"
@@ -14,15 +15,16 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
       <input
         type="text"
         formControlName="title"
-        placeholder="will hold current value..."
+        placeholder="{{ todo.title }}"
       />
       <input
         type="text"
         formControlName="description"
-        placeholder="will hold current value..."
+        placeholder="{{ todo.description }}"
       />
       <button>Update Todo</button>
     </form>
+    }
   `,
   imports: [ReactiveFormsModule],
 })
@@ -30,7 +32,7 @@ export class EditTodoFormComponent {
   private fb = inject(FormBuilder);
 
   todoEdited = output<CreateTodo>();
-  todos = input.required<Todo[]>();
+  todoObj = input<Todo>();
 
   editForm = this.fb.nonNullable.group({
     title: [''],
