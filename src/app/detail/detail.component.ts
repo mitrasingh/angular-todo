@@ -14,7 +14,11 @@ import { EditTodoFormComponent } from './ui/edit-todo-form.component';
     } @else {
     <p>Could not find todo.</p>
     } @if (showEditTodo) {
-    <app-edit-todo-form [todoObj]="todo()"></app-edit-todo-form>
+    <app-edit-todo-form
+      [todoObj]="todo()"
+      (todoEdited)="todoService.editTodo($event)"
+      )
+    ></app-edit-todo-form>
     }
   `,
   imports: [EditTodoFormComponent],
