@@ -1,5 +1,5 @@
 import { Component, inject, input, output } from '@angular/core';
-import { CreateTodo, Todo } from '../../shared/interfaces/todo';
+import { Todo } from '../../shared/interfaces/todo';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -17,7 +17,6 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
         formControlName="description"
         placeholder="new description"
       />
-      <p>{{ editForm.value.title }}</p>
       <button>Update Todo</button>
     </form>
   `,
@@ -31,6 +30,7 @@ export class EditTodoFormComponent {
     title: [''],
     description: [''],
   });
+
   ngOnInit() {
     this.editForm.patchValue({
       id: this.todoObj()?.id,
