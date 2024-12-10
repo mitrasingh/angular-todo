@@ -1,4 +1,4 @@
-import { Component, inject, input, output } from '@angular/core';
+import { Component, inject, input, OnInit, output } from '@angular/core';
 import { Todo } from '../../shared/interfaces/todo';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
@@ -22,7 +22,7 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
   `,
   imports: [ReactiveFormsModule],
 })
-export class EditTodoFormComponent {
+export class EditTodoFormComponent implements OnInit {
   private fb = inject(FormBuilder);
 
   editForm = this.fb.nonNullable.group({
