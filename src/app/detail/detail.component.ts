@@ -8,6 +8,7 @@ import { EditTodoFormComponent } from './ui/edit-todo-form.component';
   selector: 'app-detail',
   template: `
     @if (todo(); as todo) {
+    <p>{{ todo.id }}</p>
     <h2>{{ todo.title }}</h2>
     <p>{{ todo.description }}</p>
     <button (click)="toggleEditTodo()">Edit</button>
@@ -17,7 +18,6 @@ import { EditTodoFormComponent } from './ui/edit-todo-form.component';
     <app-edit-todo-form
       [todoObj]="todo()"
       (todoEdited)="todoService.editTodo($event)"
-      )
     ></app-edit-todo-form>
     }
   `,
