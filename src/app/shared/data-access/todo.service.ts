@@ -29,4 +29,8 @@ export class TodoService {
       )
     );
   }
+
+  checkTodo(todo: Todo) {
+    console.log(todo);
+  }
 }
