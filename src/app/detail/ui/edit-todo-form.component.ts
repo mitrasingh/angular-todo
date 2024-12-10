@@ -17,34 +17,28 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
         formControlName="description"
         placeholder="new description"
       />
-      <p>{{ titleValue }}</p>
+      <p>{{ editForm.value.title }}</p>
       <button>Update Todo</button>
     </form>
   `,
   imports: [ReactiveFormsModule],
 })
 export class EditTodoFormComponent {
+  private fb = inject(FormBuilder);
+
+  editForm = this.fb.nonNullable.group({
+    id: [''],
+    title: [''],
+    description: [''],
+  });
   ngOnInit() {
-    this.idValue = this.todoObj()!.id;
-    this.titleValue = this.todoObj()!.title;
-    this.descriptionValue = this.todoObj()!.description;
     this.editForm.patchValue({
-      id: this.idValue,
-      title: this.titleValue,
-      description: this.descriptionValue,
+      id: this.todoObj()?.id,
+      title: this.todoObj()?.title,
+      description: this.todoObj()?.description,
     });
   }
-  private fb = inject(FormBuilder);
 
   todoEdited = output<Todo>();
   todoObj = input<Todo>();
-  idValue = '';
-  titleValue = '';
-  descriptionValue = '';
-
-  editForm = this.fb.nonNullable.group({
-    id: [this.idValue],
-    title: [this.titleValue],
-    description: [this.descriptionValue],
-  });
 }
