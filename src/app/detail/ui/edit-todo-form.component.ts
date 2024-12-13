@@ -31,11 +31,12 @@ export class EditTodoFormComponent implements OnInit {
     description: [''],
   });
 
+  // patchValue updates ex
   ngOnInit() {
-    this.editForm.patchValue({
-      id: this.todoObj()?.id,
-      title: this.todoObj()?.title,
-      description: this.todoObj()?.description,
+    this.editForm.setValue({
+      id: this.todoObj()?.id || '',
+      title: this.todoObj()?.title || '',
+      description: this.todoObj()?.description || '',
     });
   }
 
