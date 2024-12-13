@@ -31,7 +31,8 @@ export class EditTodoFormComponent implements OnInit {
     description: [''],
   });
 
-  // patchValue updates ex
+  // could use patchValue but since we are updating all properties (entire structure),
+  // instead of one or two, setValue makes sense
   ngOnInit() {
     this.editForm.setValue({
       id: this.todoObj()?.id || '',
