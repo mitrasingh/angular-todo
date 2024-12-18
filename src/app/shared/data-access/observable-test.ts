@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Component({
+  standalone: true,
   selector: 'app-observable-test',
   template: ` <p>Observable Test</p> `,
 })
